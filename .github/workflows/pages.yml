@@ -1,9 +1,10 @@
-name: Deploy CAENS Browser Preview to GitHub Pages
+name: Deploy CAENS Web Preview to GitHub Pages
 on:
   push:
     branches: [main]
     paths:
-      - "apps/browser/web/**"
+      - "index.html"
+      - "web/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 permissions:
@@ -27,19 +28,19 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: apps/browser/web/package.json
+          cache-dependency-path: web/package.json
       - name: Install dependencies
-        working-directory: apps/browser/web
+        working-directory: web
         run: npm install
-      - name: Build TypeScript app
-        working-directory: apps/browser/web
+      - name: Build website
+        working-directory: web
         run: npm run build
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/browser/web/dist
+          path: web/dist
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
