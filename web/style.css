@@ -7,7 +7,7 @@
 :root{background:#fff}
 body{background:#fff}
 .app-shell{
-  background:linear-gradient(180deg,var(--theme-top) 0%,var(--theme-mid) 11%,var(--theme-soft) 25%,#f7fbff 39%,#fff 58%);
+  background:linear-gradient(180deg,var(--theme-top) 0vh,var(--theme-mid) 4vh,var(--theme-soft) 10vh,#fff 20vh,#fff 100%);
   border:0;
   box-shadow:none;
 }
@@ -19,5 +19,5 @@ main{background:transparent}
 .quick-card,.info-card{box-shadow:0 3px 14px #344e6810}
 .preview-tag{background:#ffffffa8}
 @media(max-width:760px){
-  .app-shell{background:linear-gradient(180deg,var(--theme-top) 0%,var(--theme-mid) 16%,var(--theme-soft) 32%,#fff 52%)}
+  .app-shell{background:linear-gradient(180deg,var(--theme-top) 0vh,var(--theme-mid) 4vh,var(--theme-soft) 10vh,#fff 20vh,#fff 100%)}
 }
