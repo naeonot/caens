@@ -206,8 +206,9 @@ class MainActivity : Activity() {
         AlertDialog.Builder(this).setTitle("Choose browser colour")
             .setSingleChoiceItems(themes.map { it.name }.toTypedArray(), selectedTheme) { dialog, which ->
                 selectedTheme = which
+                header.background = gradient(themes[selectedTheme])
                 dialog.dismiss()
-                recreate()
+                showHome()
             }.setNegativeButton("Cancel", null).show()
     }
 
