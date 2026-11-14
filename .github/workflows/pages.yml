@@ -1,4 +1,5 @@
-name: Deploy CAENS Web Preview to GitHub Pages
+name: Deploy CAENS Static Website to GitHub Pages
+# Plain HTML/CSS/JS only — no framework build is required.
 on:
   push:
     branches: [main]
