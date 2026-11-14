@@ -15,32 +15,22 @@ concurrency:
   group: pages
   cancel-in-progress: true
 jobs:
-  build-and-deploy:
+  deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Prepare static website
+        run: |
+          mkdir _site
+          cp index.html _site/index.html
+          cp -R web _site/web
+      - uses: actions/upload-pages-artifact@v3
         with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: web/package.json
-      - name: Install dependencies
-        working-directory: web
-        run: npm install
-      - name: Build website
-        working-directory: web
-        run: npm run build
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Upload site
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: web/dist
+          path: _site
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
