@@ -1,26 +1,27 @@
 # CAENS Browser
 
-Status: early prototype source.
+Status: early Android WebView prototype; not build-tested yet.
 
-CAENS Browser is intended to be the controlled entry point to CAENS services. The current Android implementation uses the Android System WebView; it is not a new browser engine.
+## UI direction
+- Warm off-white / ivory browser canvas with white rounded cards.
+- Soft gradient header.
+- Theme picker: Ocean Blue, Coral Red, Lavender, Mint Green and Warm Amber.
+- World mode with a globe icon; ON by default.
+- Home screen shortcuts, address/search bar and basic navigation controls.
 
-## Current features
-- URL and search input.
-- Back, forward and reload controls.
-- Internet Mode switch.
-- Internet Mode ON: allows normal public HTTP/HTTPS websites.
-- Internet Mode OFF: blocks public destinations in the app and reserves access for configured CAENS hosts.
+## World mode
+- ON: normal public HTTP/HTTPS websites are allowed.
+- OFF: public destinations are blocked in this browser; navigation is reserved for configured CAENS hostnames.
+- The toggle is a client-side browsing preference, not a security boundary.
 
-## Important limitation
-The CAENS private gateway and trusted hostnames do not exist yet. Therefore CAENS-only mode is a **local client-side restriction for testing**, not production security. A determined user can modify the client or use another browser. Real exclusivity requires server-side identity, device credentials and network authorization.
+## Current limitations
+- CAENS gateway hostnames are placeholders (`caens.local`, `caens.internal`).
+- Bookmarks and History tabs are visual placeholders for a later iteration.
+- Theme selection currently applies the selected palette to the header; broader theme persistence and per-screen theming are future work.
+- The private gateway, identity provider, device enrollment and server-side authorization are not configured.
+- No APK has been generated or tested yet.
 
 ## Build
-Open `android/` in Android Studio. Use JDK 17 and Android SDK 35 or a newer compatible SDK. Let Android Studio install the matching Gradle tooling if prompted.
+Open `android/` in Android Studio with JDK 17 and Android SDK 35 or compatible tooling.
 
 Package: `com.caens.browser`
-
-## Next
-1. Build and install the app on Android.
-2. Test Internet Mode ON/OFF.
-3. Configure a real CAENS gateway hostname before enabling private-service access.
-4. Add device enrollment and server-side authorization before calling it secure.
