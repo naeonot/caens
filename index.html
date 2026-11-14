@@ -1,14 +1,66 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#dceeff" />
-    <meta name="description" content="CAENS Browser — a calmer way to explore your digital world." />
-    <title>CAENS Browser</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/web/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e7f1fb">
+  <meta name="description" content="CAENS Browser — a calmer way to explore your digital world.">
+  <title>CAENS Browser</title>
+  <link rel="stylesheet" href="./web/style.css">
+  <script src="./web/script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="topbar">
+        <a class="brand" href="./" aria-label="CAENS Browser home">caens<span>BROWSER</span></a>
+        <nav class="nav-tabs" aria-label="Browser sections">
+          <button class="nav-tab active" data-tab="home">Home</button>
+          <button class="nav-tab" data-tab="bookmarks">Bookmarks</button>
+          <button class="nav-tab" data-tab="history">History</button>
+        </nav>
+        <div class="top-actions">
+          <button class="soft-button" id="themeButton" type="button">◐ <span>Ocean Blue</span></button>
+          <button class="world-button" id="worldButton" type="button" aria-pressed="true">◎ World <b>ON</b></button>
+        </div>
+      </div>
+      <form class="search-form" id="searchForm">
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="addressInput" type="text" autocomplete="off" placeholder="Search or enter website address" aria-label="Search or enter website address"></label>
+        <button class="go-button" type="submit">Go <span>↗</span></button>
+      </form>
+    </header>
+    <div class="browser-tools" aria-label="Navigation controls">
+      <button type="button" id="backButton" aria-label="Go back">‹</button>
+      <button type="button" id="forwardButton" aria-label="Go forward">›</button>
+      <button type="button" id="reloadButton" aria-label="Reload">↻</button>
+      <button type="button" id="homeButton" aria-label="Home">⌂</button>
+    </div>
+    <main>
+      <section class="welcome-row">
+        <div><p class="eyebrow">YOUR PRIVATE DIGITAL SPACE</p><h1 id="pageTitle">Welcome to CAENS</h1><p class="subtitle" id="pageSubtitle">A calmer way to explore your digital world.</p></div>
+        <span class="preview-tag">EARLY PREVIEW</span>
+      </section>
+      <section class="content-section" id="homeContent">
+        <div class="section-heading"><div><h2>Quick access</h2><p>Your spaces, one click away.</p></div></div>
+        <div class="quick-grid">
+          <button class="quick-card" type="button" data-message="Bookmarks are being built."><span class="card-icon bookmark-icon">▣</span><strong>Bookmarks</strong><small>Your saved websites</small><span class="card-arrow">↗</span></button>
+          <button class="quick-card" type="button" data-message="History is being built."><span class="card-icon history-icon">◷</span><strong>Recent history</strong><small>Continue where you left off</small><span class="card-arrow">↗</span></button>
+          <button class="quick-card" type="button" data-message="The private CAENS network is not connected yet."><span class="card-icon network-icon">◇</span><strong>CAENS network</strong><small>Your private services</small><span class="card-arrow">↗</span></button>
+        </div>
+      </section>
+      <section class="content-section" id="exploreContent">
+        <div class="section-heading"><div><h2>Explore the web</h2><p>Choose a topic and start discovering.</p></div></div>
+        <div class="topic-chips"><button class="topic-chip selected" data-query="technology">✦ Discover</button><button class="topic-chip" data-query="technology news">Technology</button><button class="topic-chip" data-query="learn online">Learning</button><button class="topic-chip" data-query="world news">News</button><button class="topic-chip" data-query="design inspiration">Design</button></div>
+        <div class="info-grid">
+          <article class="info-card"><span class="info-icon">◎</span><div><strong>World internet</strong><small id="worldStatus">Public websites are allowed</small></div><span class="status-pill" id="worldStatusPill">ON</span></article>
+          <article class="info-card"><span class="info-icon">⌑</span><div><strong>Private by design</strong><small>CAENS services require trusted access</small></div></article>
+          <article class="info-card"><span class="info-icon">✳</span><div><strong>Make it yours</strong><small>Change the colour theme anytime</small></div></article>
+        </div>
+      </section>
+      <section class="empty-state hidden" id="emptyState"><div class="empty-symbol">⌕</div><h2 id="emptyTitle">Nothing here yet</h2><p id="emptyText">Your saved items will appear here.</p><button type="button" class="return-button" id="returnHome">Back to Home</button></section>
+    </main>
+    <footer><span>CAENS Browser <i>·</i> Early UI preview</span><span>Built for a private digital ecosystem</span></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
 </html>
